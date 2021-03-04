@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>eMail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <style media="screen">
+      h2 {
+        text-align: center;
+        color: red;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <h1 id="accesso"></h1>
+    <h2 id="gioco"></h2>
+    <h2 id="vincitore"></h2>
+
+
+    <script>
+
+      // GOAL:
+      // Chiedi all'utente la sua email, controlla che sia nella lista di chi può accedere, stampa un messaggio appropriato
+
+      var credenziali = prompt("Inserisci la tua E-mail per accedere")
+      var eMail = ["mats@hotmail.it" , "sara@hotmail.it" , "claudio@hotmail.it" , "marco@hotmail.it" , "kevin@hotmail.it" , "brian@hotmail.it" , "dustin@hotmail.it" ]
+
+      for (var i = 0; i < eMail.length; i++) {
+
+        if (credenziali === eMail[i]) {
+          console.log ("Benvenuto nel mio sito. La Mail "  + eMail[i] + " è corretta.");
+          document.getElementById('accesso').innerHTML = "Benvenuto nel mio sito. La mail "  + eMail[i] + " è corretta."
+
+          i = eMail.length;
+        }
+        else if (i== eMail.length - 1){
+          alert("Non puoi entrare :-(");
+        }
+      }
+
+      // 2 - Generare un numero random da 1 a 6, sia per il giocatore sia per il compute. Stabilire il vincitore, in base a chi fa il punteggio più alto.
+
+      var min = 0;
+      var max = 6 - min;
+      var computer = Math.floor(Math.random() * max) + min + 1;
+      var player = Math.floor(Math.random() * max) + min + 1;
+
+      document.getElementById('gioco').innerHTML = "TU: " + player + " Computer: " + computer;
+      console.log("TU: " + player + " Computer: " + computer);
+      if (player>computer) {
+
+        document.getElementById('vincitore').innerHTML = "HAI VINTO LA PARTITA!!!";
+        console.log("HAI VINTO LA PARTITA!!!");
+      } else if (player==computer){
+
+        document.getElementById('vincitore').innerHTML = "PAREGGIO, RIPROVA!";
+        console.log("PAREGGIO, RIPROVA!");
+      } else {
+
+        document.getElementById('vincitore').innerHTML = "HAI PERSO, PECCATO!!";
+        console.log("HAI PERSO, PECCATO!!");
+      }
+
+    </script>
+  </body>
+</html>
